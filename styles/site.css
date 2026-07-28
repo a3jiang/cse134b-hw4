@@ -1,0 +1,39 @@
+@layer site {
+    
+    /**/
+    @media (prefers-reduced-motion: no-preference) {
+    
+        @view-transition { navigation: auto; }
+    
+    }
+
+    body > header {
+
+        display: grid;
+        grid-template-areas:
+            "title logo"
+            "tagline tagline";
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        column-gap: 0.75rem;
+
+    }
+
+    body > header > img { grid-area: logo; }
+    body > header > h1  { grid-area: title; }
+    body > header > p   { grid-area: tagline; }
+
+
+    body > nav {
+        
+
+
+    }
+
+    body > footer {
+
+
+
+    }
+
+}

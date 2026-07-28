@@ -1,0 +1,76 @@
+:root {
+      /* Font */
+    --font-display: "Playfair Display", Georgia, serif;
+    --font-body: "Lora", Georgia, serif;
+
+    /* Color */
+    --cheese-color: #9c7712;
+    --font-color: #57430f;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--font-color);
+    line-height: 1.6;
+    font-size: 0.8rem;
+
+}
+
+h1, h2 {
+    font-family: var(--font-display);   
+
+}
+
+i[lang] {
+    color: #FF0000;
+}
+
+input[type="text"] {
+    border-radius: 0;
+}
+
+.latin {
+    font-style: italic;
+}
+
+#warning {
+    border: 2;
+}
+
+header p {
+    color: var(--cheese-color);
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.5em;
+}
+
+
+dt + dd {
+    font-size: 0.5rem;
+}
+
+a:hover {
+    background-color: bisque;
+}
+
+input:focus {
+    background-color: lightblue;
+}
+
+input:checked + label {
+    color: #0000FF;
+}
+
+dt::before {
+    content: "🧀 ";
+}
+
+button {
+    background-color: #000000;
+}
+/* Override wins because more specific/local wins over more general (css)*/
+
+dl img {
+    width: 5rem;
+    height: 5rem;
+}

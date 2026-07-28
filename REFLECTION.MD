@@ -1,0 +1,1 @@
+fuck semantics, so annoying because there are so many ways to do it, but it matters to find the one that fits for my situation because of how i want to leverage optimal css styling

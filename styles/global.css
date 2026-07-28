@@ -1,0 +1,60 @@
+@layer global, site;
+
+@layer global {
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    header > img {
+    
+        width: 2rem; 
+        height: 2rem;
+        
+
+    }
+
+
+    body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: var(--text-m);
+        line-height: 1.5;
+    }
+
+    h1, h2 {
+        margin-block: 0 var(--space-2);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: var(--text-xl); }
+    h2 { font-size: var(--text-l); }
+
+    p {
+        margin-block: 0 var(--space-2);
+    }
+
+    figcaption {
+        font-size: var(--text-s);
+    }
+
+    a {
+        color: var(--ink);
+        text-decoration-color: var(--accent);
+        text-decoration-thickness: var(--underline-width);
+
+        &:hover {
+        color: var(--accent);
+        }
+    }
+
+    code {
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 0.9em;
+    }
+
+
+}
