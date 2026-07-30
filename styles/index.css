@@ -1,0 +1,95 @@
+@layer page {
+
+    /*
+      GRID HOLY GRAIL
+      The full holy grail in ONE grid container — no wrappers, no nesting.
+      grid-template-areas draws the layout as ASCII art: header and footer
+      span all three columns, nav | main | aside share the middle row.
+    */
+    body {
+        --nav-width: 10rem;
+        --aside-width: 12rem;
+
+        display: grid;
+        grid-template-areas:
+            "header header header"
+            "nav    main   aside"
+            "footer footer footer";
+        grid-template-columns: var(--nav-width) 1fr var(--aside-width);
+        grid-template-rows: auto 1fr auto;
+        min-height: 100svh;
+
+        > header {
+            grid-area: header;
+            padding: var(--space-2) var(--space-3);
+            border-block-end: var(--border);
+            background: var(--panel);
+        }
+
+        > nav {
+            grid-area: nav;
+            padding: var(--space-2);
+            border-inline-end: var(--border);
+            background: var(--panel);
+        }
+
+        > main {
+            grid-area: main;
+            padding: var(--space-3);
+        }
+
+        > aside {
+            grid-area: aside;
+            padding: var(--space-2);
+            border-inline-start: var(--border);
+            background: var(--panel);
+        }
+
+        > footer {
+            grid-area: footer;
+            padding: var(--space-2) var(--space-3);
+            border-block-start: var(--border);
+            background: var(--panel);
+        }
+
+        /*
+          Because every region is placed by name, redrawing the map is the
+          whole job — one column, no region's HTML or other CSS changes.
+        */
+        @media (max-width: 40rem) {
+            grid-template-areas:
+                "header"
+                "nav"
+                "main"
+                "aside"
+                "footer";
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto 1fr auto auto;
+
+            > nav,
+            > aside {
+                border-inline: none;
+                border-block-end: var(--border);
+            }
+        }
+    }
+
+    /*
+      CHEESE FACT POPOVER
+      Driven entirely by command/commandfor on the buttons — no JavaScript.
+      The UA stylesheet already centres [popover] with inset: 0 + margin: auto
+      and lifts it into the top layer, so it is never clipped by the 12rem
+      aside column that contains it. These rules are cosmetic only.
+    */
+    [popover] {
+        max-width: min(90vw, var(--measure));
+        padding: var(--space-3);
+        border: var(--border);
+        background: var(--paper);
+    }
+
+    [popover]::backdrop {
+        background: rgb(0 0 0 / 0.4);
+    }
+
+}

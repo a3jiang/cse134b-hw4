@@ -1,27 +1,40 @@
+/*
+  CROSS-DOCUMENT VIEW TRANSITIONS
+
+  @view-transition is only allowed at the top level of a stylesheet or inside
+  a conditional group rule (@media / @supports / @container). @layer is NOT a
+  conditional group rule, so nesting this inside @layer site made the browser
+  drop it and no transition ran. It stays outside the layer block.
+
+  The @media wrapper is the reduced-motion guard: the opt-in only happens for
+  visitors who have expressed no preference against motion. Anyone asking for
+  reduced motion never gets the navigation set to auto in the first place.
+*/
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition { navigation: auto; }
+}
+
 @layer site {
-    
-    /**/
-    @media (prefers-reduced-motion: no-preference) {
-    
-        @view-transition { navigation: auto; }
-    
+
+    body {
+        
+        > header {
+
+            display: grid;
+            grid-template-areas:
+                "title logo"
+                "tagline tagline";
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            column-gap: 0.75rem;
+
+            > img { grid-area: logo; }
+            > h1  { grid-area: title; }
+            > p   { grid-area: tagline; }
+        }
+
     }
 
-    body > header {
-
-        display: grid;
-        grid-template-areas:
-            "title logo"
-            "tagline tagline";
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        column-gap: 0.75rem;
-
-    }
-
-    body > header > img { grid-area: logo; }
-    body > header > h1  { grid-area: title; }
-    body > header > p   { grid-area: tagline; }
 
 
     body > nav {

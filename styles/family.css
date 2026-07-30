@@ -1,0 +1,77 @@
+/*
+  family.css — shared page styles for the four cheese-family pages
+  (guide/fresh.html, guide/soft.html, guide/blue.html, guide/hard.html).
+
+  GRID PAGE SCAFFOLD
+  The same header/nav/main/footer page as the flex scaffold, built with grid.
+  grid-template-areas names the rows so the CSS reads like a sketch of the
+  page; each region claims its slot with grid-area. Rows are auto auto 1fr
+  auto: natural height at the edges, main takes the rest.
+
+  The row list must stay the same length as the area map — see the note on
+  grid-template-rows below.
+
+  Replaces blue.css, fresh.css, hard.css and soft.css, which were four
+  byte-identical copies of these rules.
+*/
+@layer page {
+
+    body {
+        display: grid;
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+        /* Four named rows need four values here. With only three, the 1fr
+           landed on nav and main fell back to auto. */
+        grid-template-rows: auto auto 1fr auto;
+        min-height: 100svh;
+
+        > header {
+            grid-area: header;
+            padding: var(--space-2) var(--space-3);
+            border-block-end: var(--border);
+            background: var(--panel);
+        }
+
+        > nav {
+            grid-area: nav;
+            
+        }
+
+        > main {
+            grid-area: main;
+            padding: var(--space-3);
+
+            /* Family hero. These SVGs carry a viewBox but no width/height
+               attribute, so they have an aspect ratio (4:3) and no intrinsic
+               size — left alone an <img> would fall back to 300px wide.
+               height: auto keeps the ratio; min() stops it overflowing on
+               narrow screens. */
+            img {
+                width: min(100%, 20rem);
+                height: auto;
+            }
+
+            /* Prev/next pager. The flex row and the vertical-when-narrow
+               behaviour come from the nav rules in global.css; all this adds
+               is a rule above it and the push to opposite ends. */
+            .pager {
+                margin-block-start: var(--space-3);
+                padding-block-start: var(--space-2);
+                border-block-start: var(--border);
+
+                ul { justify-content: space-between; }
+            }
+        }
+
+        > footer {
+            grid-area: footer;
+            padding: var(--space-2) var(--space-3);
+            border-block-start: var(--border);
+            background: var(--panel);
+        }
+    }
+
+}

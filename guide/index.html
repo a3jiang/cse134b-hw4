@@ -8,55 +8,23 @@
   <link rel="stylesheet" href="../styles/global.css">
   <link rel="stylesheet" href="../styles/site.css">
   <link rel="stylesheet" href="../styles/cheese.css">
-  <!--
-    NORMAL FLOW
-    With no layout CSS at all, block boxes (h1, p, section…) stack top to
-    bottom and fill the available width, while inline boxes (strong, em, a…)
-    run left to right inside lines of text.
-    The only real layout rules here build the classic centered reading
-    column: max-width plus margin-inline: auto on the article.
-  -->
-  <style>
-    body {
-      padding: var(--space-3);
-    }
-
-    section {
-      p {
-        padding: var(--space-2);
-        border: var(--border);
-        background: var(--panel);
-      }
-
-      strong,
-      em {
-        background: var(--paper);
-        outline: var(--border-width) var(--border-style) var(--accent);
-      }
-    }
-
-    article {
-      max-width: var(--measure);
-      margin-inline: auto;
-      padding: var(--space-2) var(--space-3);
-      border-inline-start: var(--rule);
-      background: var(--panel);
-    }
-
-  </style>
-
 </head>
 
 <body>
 
   <header>
-  <h1>F*ck you, pay me!</h1>
+  <h1>The CSE Cheese Society</h1>
   <img src="../images/logo.svg" alt="A cheese wheel logo with an eighth of it cut out." />
-  <p>CSE134B HW4 - presented by Geico</p>
+  <p>CSE134B HW4 - presented by Alan Jiang</p>
   </header>       
   
   <nav>
-  
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="index.html">Guide</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../join.html">Join</a></li>
+    </ul>
   </nav>
 
   <main>
@@ -147,8 +115,9 @@
       <label>
           Tell us your favorite cheese: 
           <input type="text" placeholder="e.g. Comté"/>
-          <button type="button" style="background-color:#00FF00;">Add it to the guide</button>
-          <!--Override wins because more specific/local wins over more general (css)-->
+          <button type="button" class="add-cheese">Add it to the guide</button>
+          <!--The .add-cheese class (0,1,0) beats the plain button rule (0,0,1) in
+              cheese.css, so the more specific selector wins — no inline style needed.-->
       </label>
   </form>
   </section>
@@ -156,7 +125,7 @@
   </main>
 
   <footer>
-  Copyright 2026 <a href="cheese.css">The CSE Cheese Society</a>. Cheese responsibly.
+    <p>Copyright 2026 <a href="../index.html">The CSE Cheese Society</a>. Cheese responsibly.</p>
   </footer>
 
 </body>

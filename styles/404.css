@@ -1,0 +1,91 @@
+/*
+  404.css — page styles for 404.html
+
+  FLEX CENTERING
+  The page is a flex column (header / main / footer) so the header and footer
+  keep their natural height and span the full width. main takes flex: 1 to
+  absorb everything left over, then becomes a flex container itself with
+  justify-content + align-items set to center — so the card is centered on
+  both axes inside whatever space is left, at any viewport height. No
+  positioning, no negative margins, no guessing at half-heights.
+*/
+@layer page {
+
+    body {
+        --card-width: 30rem;
+
+        display: flex;
+        flex-direction: column;
+        min-height: 100svh;
+
+        > header {
+            padding: var(--space-2) var(--space-3);
+            border-block-end: var(--border);
+            background: var(--panel);
+        }
+
+        > nav {
+            padding: var(--space-1) var(--space-3);
+            border-block-end: var(--border);
+        }
+
+        > footer {
+            padding: var(--space-2) var(--space-3);
+            border-block-start: var(--border);
+            background: var(--panel);
+            font-size: var(--text-s);
+        }
+    }
+
+    /*
+      The centering itself. main is the flex container; .lost is its only
+      child, so both axes resolve to dead center.
+    */
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--space-3);
+    }
+
+    .lost {
+        max-width: var(--card-width);
+        padding: var(--space-3);
+        border: var(--border);
+        border-block-start: var(--rule);
+        background: var(--panel);
+        text-align: center;
+    }
+
+    /*
+      The wedge sits slightly off-square. A cheese diagram stands up straight;
+      a disappointed one slumps.
+    */
+    .wedge {
+        display: block;
+        width: min(55%, 10rem);
+        height: auto;
+        margin-block-end: var(--space-2);
+        margin-inline: auto;
+        transform: rotate(-6deg);
+    }
+
+    /*
+      The status code is a label, not a headline — it reports what the server
+      said. Set in the monospace face the rest of the site uses for code.
+    */
+    .status {
+        margin-block-end: var(--space-1);
+        color: var(--accent);
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: var(--text-s);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    .lost > p:last-child {
+        margin-block-end: 0;
+    }
+
+}

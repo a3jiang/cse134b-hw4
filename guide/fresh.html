@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>08 · Grid page scaffold</title>
-  <link rel="stylesheet" href="vars.css">
-  <link rel="stylesheet" href="global.css">
+  <title>Fresh Cheeses · A Short Guide to Cheese</title>
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/site.css">
   <!--
     GRID PAGE SCAFFOLD
     The same header/main/footer page as demo 06, built with grid instead.
@@ -13,20 +14,64 @@
     the page; each region claims its slot with grid-area. Rows are
     auto 1fr auto: natural height at the edges, main takes the rest.
   -->
-  <link rel="stylesheet" href="../styles/fresh.css">
+  <link rel="stylesheet" href="../styles/family.css">
 </head>
 <body>
   <header>
-    <h1>08 · Grid page scaffold</h1>
+    <h1>The CSE Cheese Society</h1>
+    <img src="../images/logo.svg" alt="A cheese wheel logo with an eighth of it cut out." />
+    <p>CSE134B HW4 - presented by Alan Jiang</p>
   </header>
 
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="index.html">Guide</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../join.html">Join</a></li>
+    </ul>
+  </nav>
+
   <main>
-    <p>Main — this region is placed with <code>grid-area: main</code> into the <code>1fr</code> row, so it takes all the height the header and footer leave over.</p>
-    <p>Compare the CSS with demo 06: no growing children, just three named rows.</p>
+    <section>
+      <h2>Fresh Cheeses</h2>
+      <img src="../images/cheese-fresh.svg" alt="A white, spherical-shaped cheese on a cutting board, with a leaf hanging off and a stub jutting out the top." />
+
+      <p>Young, moist, and mild. Fresh cheeses skip aging entirely: the curds are
+      drained, maybe lightly salted, and sent straight to the table. They taste of
+      milk itself, which is the whole point.</p>
+
+      <dl>
+        <dt>Character</dt>
+        <dd>Soft, spreadable or springy, high in moisture. Flavors are delicate —
+        milky, lemony, faintly sweet. There is nowhere for a flaw to hide, so
+        freshness is everything.</dd>
+
+        <dt>Notable members</dt>
+        <dd>Mozzarella, ricotta, chèvre, queso fresco, and mascarpone.</dd>
+
+        <dt>How to enjoy</dt>
+        <dd>Eat within days. Tear mozzarella over tomatoes, spoon ricotta onto
+        toast with honey, crumble chèvre into a salad. Fresh cheese belongs to
+        summer.</dd>
+      </dl>
+
+      <aside>
+        <h3>Did you know?</h3>
+        <p>Real <i lang="it">mozzarella di bufala</i> is made from the milk of water
+        buffalo, whose herds were brought to Italy over a thousand years ago.</p>
+      </aside>
+    </section>
+
+    <nav class="pager" aria-label="Cheese families">
+      <ul>
+        <li><a rel="next" href="soft.html">Next: Soft-Ripened Cheeses →</a></li>
+      </ul>
+    </nav>
   </main>
 
   <footer>
-    <p>Footer — sits in the last named row, pinned to the bottom by the 1fr row above it.</p>
+    <p>Copyright 2026 <a href="../index.html">The CSE Cheese Society</a>. Cheese responsibly.</p>
   </footer>
 </body>
 </html>

@@ -1,0 +1,50 @@
+/*
+  join.css — page styles for join.html
+
+  NOTE: join.html currently holds two concatenated HTML documents, each of
+  which had its own <style> block. Both blocks are reproduced below in their
+  original source order, so the cascade behaves exactly as it did inline —
+  the second body rule still wins on display/alignment. Once the duplicate
+  document is removed from join.html, the block that goes with it can be
+  deleted from here too.
+*/
+@layer page {
+
+    /*
+      From document 1 — FLEX PAGE SCAFFOLD
+      The body is a flex column at least as tall as the viewport. Header and
+      footer take their natural height; main has flex: 1, so it grows to
+      absorb the leftover space and pushes the footer to the bottom even
+      when the content is short.
+    */
+    body {
+        --card-width: 28rem;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: var(--space-3);
+        min-height: 100svh;
+
+        > header {
+            padding: var(--space-2) var(--space-3);
+            border-block-end: var(--border);
+            background: var(--panel);
+        }
+
+        > main {
+            max-width: var(--card-width);
+            padding: var(--space-3);
+            border: var(--border);
+            border-block-start: var(--rule);
+            background: var(--panel);
+        }
+
+        > footer {
+            padding: var(--space-2) var(--space-3);
+            border-block-start: var(--border);
+            background: var(--panel);
+        }
+    }
+}

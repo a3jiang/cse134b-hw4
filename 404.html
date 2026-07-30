@@ -3,41 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>05 · Flex centering</title>
-  <link rel="stylesheet" href="vars.css">
-  <link rel="stylesheet" href="global.css">
-  <!--
-    FLEX CENTERING
-    The body is a flex container filling the viewport (min-height: 100svh).
-    justify-content centers its child on the main axis (horizontal here)
-    and align-items centers it on the cross axis (vertical) — perfect
-    centering in three lines, the problem floats never solved.
-  -->
-  <style>
-    body {
-      --card-width: 28rem;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100svh;
-      padding: var(--space-3);
-
-      main {
-        max-width: var(--card-width);
-        padding: var(--space-3);
-        border: var(--border);
-        border-block-start: var(--rule);
-        background: var(--panel);
-      }
-    }
-  </style>
+  <title>Hole in the wheel · The CSE Cheese Society</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/site.css">
+  <link rel="stylesheet" href="styles/404.css">
 </head>
 <body>
+  <header>
+    <h1>The CSE Cheese Society</h1>
+    <img src="images/logo.svg" alt="A cheese wheel logo with an eighth of it cut out." />
+    <p>CSE134B HW4 - presented by Alan Jiang</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="guide/index.html">Guide</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="join.html">Join</a></li>
+    </ul>
+  </nav>
+
   <main>
-    <h1>05 · Flex centering</h1>
-    <p>This card sits dead center in the viewport. The body is <code>display: flex</code> with <code>justify-content: center</code> and <code>align-items: center</code>.</p>
-    <p>Resize the window — it stays centered both ways.</p>
+    <section class="lost">
+      <img class="wedge" src="images/sad-cheese.svg" alt="A sad wedge of swiss cheese with a bite taken out of it." />
+
+      <p class="status">Error 404</p>
+      <h2>Hole in the wheel</h2>
+
+      <p>The page you asked for isn't here. Holes belong in the cheese, not in the Guide.</p>
+      <p>Nothing was eaten on purpose — check the address, or start again from
+      <a href="index.html">the front door</a> or <a href="guide/index.html">the Guide</a>.</p>
+    </section>
   </main>
+
+  <footer>
+    <p>Copyright 2026 <a href="index.html">The CSE Cheese Society</a>. Cheese responsibly.</p>
+  </footer>
 </body>
 </html>

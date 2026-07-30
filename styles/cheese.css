@@ -1,76 +1,126 @@
-:root {
-      /* Font */
-    --font-display: "Playfair Display", Georgia, serif;
-    --font-body: "Lora", Georgia, serif;
+@layer page {
 
-    /* Color */
-    --cheese-color: #9c7712;
-    --font-color: #57430f;
-}
+    :root {
+          /* Font */
+        --font-display: "Playfair Display", Georgia, serif;
+        --font-body: "Lora", Georgia, serif;
 
-body {
-    font-family: var(--font-body);
-    color: var(--font-color);
-    line-height: 1.6;
-    font-size: 0.8rem;
+        /* Color */
+        --cheese-color: #9c7712;
+        --font-color: #57430f;
+    }
 
-}
+    body {
+        font-family: var(--font-body);
+        color: var(--font-color);
+        line-height: 1.6;
+        font-size: 0.8rem;
 
-h1, h2 {
-    font-family: var(--font-display);   
+    }
 
-}
+    h1, h2 {
+        font-family: var(--font-display);
 
-i[lang] {
-    color: #FF0000;
-}
+    }
 
-input[type="text"] {
-    border-radius: 0;
-}
+    i[lang] {
+        color: #FF0000;
+    }
 
-.latin {
-    font-style: italic;
-}
+    input[type="text"] {
+        border-radius: 0;
+    }
 
-#warning {
-    border: 2;
-}
+    .latin {
+        font-style: italic;
+    }
 
-header p {
-    color: var(--cheese-color);
-    font-style: italic;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.5em;
-}
+    #warning {
+        border: 2px;
+    }
+
+    header p {
+        color: var(--cheese-color);
+        font-style: italic;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.5em;
+    }
 
 
-dt + dd {
-    font-size: 0.5rem;
-}
+    dt + dd {
+        font-size: 0.5rem;
+    }
 
-a:hover {
-    background-color: bisque;
-}
+    a:hover {
+        background-color: bisque;
+    }
 
-input:focus {
-    background-color: lightblue;
-}
+    input:focus {
+        background-color: lightblue;
+    }
 
-input:checked + label {
-    color: #0000FF;
-}
+    input:checked + label {
+        color: #0000FF;
+    }
 
-dt::before {
-    content: "🧀 ";
-}
+    dt::before {
+        content: "🧀 ";
+    }
 
-button {
-    background-color: #000000;
-}
-/* Override wins because more specific/local wins over more general (css)*/
+    button {
+        background-color: #000000;
+    }
 
-dl img {
-    width: 5rem;
-    height: 5rem;
+    /*
+      Override wins because more specific wins over more general (css).
+      .add-cheese is a class selector (0,1,0); the button rule above is a type
+      selector (0,0,1). The class is more specific, so green wins — same lesson
+      the inline style used to demonstrate, minus the inline style.
+    */
+    .add-cheese {
+        background-color: #00FF00;
+    }
+
+    dl img {
+        width: 5rem;
+        height: 5rem;
+    }
+
+
+    /*
+      PAGE LAYOUT — moved here from the <style> block in guide/index.html
+
+      NORMAL FLOW
+      With no layout CSS at all, block boxes (h1, p, section…) stack top to
+      bottom and fill the available width, while inline boxes (strong, em, a…)
+      run left to right inside lines of text.
+      The only real layout rules here build the classic centered reading
+      column: max-width plus margin-inline: auto on the article.
+    */
+    body {
+        padding: var(--space-3);
+    }
+
+    section {
+        p {
+            padding: var(--space-2);
+            border: var(--border);
+            background: var(--panel);
+        }
+
+        strong,
+        em {
+            background: var(--paper);
+            outline: var(--border-width) var(--border-style) var(--accent);
+        }
+    }
+
+    article {
+        max-width: var(--measure);
+        margin-inline: auto;
+        padding: var(--space-2) var(--space-3);
+        border-inline-start: var(--rule);
+        background: var(--panel);
+    }
+
 }

@@ -1,4 +1,4 @@
-@layer global, site;
+@layer global, site, page;
 
 @layer global {
 
@@ -56,5 +56,35 @@
         font-size: 0.9em;
     }
 
+    /*
+      SITE NAV
+      One block of markup on every page, two orientations, no per-page rules.
+
+      The nav is declared a size container, so its list queries the width of
+      the nav itself rather than the viewport. In a narrow column — index.html's
+      10rem sidebar — the links stack vertically; in any full-width bar they run
+      horizontally.
+
+      Querying the container instead of the viewport is what makes index.html
+      work: when that page collapses to a single column the nav becomes wide,
+      so it flips to a row on its own. A viewport media query could not express
+      that, because the viewport is narrow exactly when the nav is wide.
+    */
+    nav {
+        container-type: inline-size;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        @container (min-width: 24rem) {
+            ul { flex-direction: row; }
+        }
+    }
 
 }
