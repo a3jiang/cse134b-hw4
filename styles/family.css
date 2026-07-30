@@ -55,7 +55,7 @@
             }
 
             /* Prev/next pager. The flex row and the vertical-when-narrow
-               behaviour come from the nav rules in global.css; all this adds
+               behaviour come from the nav rules in site.css; all this adds
                is a rule above it and the push to opposite ends. */
             .pager {
                 margin-block-start: var(--space-3);

@@ -12,6 +12,27 @@
 */
 @media (prefers-reduced-motion: no-preference) {
     @view-transition { navigation: auto; }
+
+    /*
+      NAMED MORPH — guide listing → family detail hero
+
+      The browser pairs elements across two documents by matching
+      view-transition-name, so the same name has to appear on both ends of the
+      navigation. A name must also be unique within a single document: one
+      shared name on all four thumbnails would collide on guide/index.html and
+      disqualify the whole transition, which is why there are four of them.
+
+      These live in site.css, which both documents load, rather than being
+      split between cheese.css (the listing) and family.css (the heroes). One
+      declaration per family means the two ends cannot drift out of sync.
+
+      Inside the reduced-motion guard: if a visitor asks for reduced motion,
+      navigation never becomes auto and no element is ever named.
+    */
+    .cheese-fresh { view-transition-name: cheese-fresh; }
+    .cheese-soft  { view-transition-name: cheese-soft; }
+    .cheese-blue  { view-transition-name: cheese-blue; }
+    .cheese-hard  { view-transition-name: cheese-hard; }
 }
 
 @layer site {
@@ -28,25 +49,45 @@
             align-items: center;
             column-gap: 0.75rem;
 
-            > img { grid-area: logo; }
+            > img {
+                grid-area: logo;
+                width: 2rem;
+                height: 2rem;
+            }
             > h1  { grid-area: title; }
             > p   { grid-area: tagline; }
         }
 
     }
 
+    /*
+      SITE NAV
+      One block of markup on every page, two orientations, no per-page rules.
+      Lives here rather than in global.css because it is layout, and global.css
+      carries reset, type and color only.
 
+      The nav is declared a size container, so its list queries the width of
+      the nav itself rather than the viewport. In a narrow column — index.html's
+      10rem sidebar — the links stack vertically; in any full-width bar they run
+      horizontally.
 
-    body > nav {
-        
+      Querying the container instead of the viewport is what makes index.html
+      work: when that page collapses to a single column the nav becomes wide,
+      so it flips to a row on its own. A viewport media query could not express
+      that, because the viewport is narrow exactly when the nav is wide.
+    */
+    nav {
+        container-type: inline-size;
 
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-1);
+        }
 
-    }
-
-    body > footer {
-
-
-
+        @container (min-width: 24rem) {
+            ul { flex-direction: row; }
+        }
     }
 
 }

@@ -7,15 +7,6 @@
         box-sizing: border-box;
     }
 
-    header > img {
-    
-        width: 2rem; 
-        height: 2rem;
-        
-
-    }
-
-
     body {
         background: var(--paper);
         color: var(--ink);
@@ -57,34 +48,14 @@
     }
 
     /*
-      SITE NAV
-      One block of markup on every page, two orientations, no per-page rules.
-
-      The nav is declared a size container, so its list queries the width of
-      the nav itself rather than the viewport. In a narrow column — index.html's
-      10rem sidebar — the links stack vertically; in any full-width bar they run
-      horizontally.
-
-      Querying the container instead of the viewport is what makes index.html
-      work: when that page collapses to a single column the nav becomes wide,
-      so it flips to a row on its own. A viewport media query could not express
-      that, because the viewport is narrow exactly when the nav is wide.
+      List markers are a type concern, not a layout one, so resetting them
+      stays here. The nav's flex orientation moved to site.css with the rest
+      of the shared chrome.
     */
-    nav {
-        container-type: inline-size;
-
-        ul {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-1);
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        @container (min-width: 24rem) {
-            ul { flex-direction: row; }
-        }
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
 }

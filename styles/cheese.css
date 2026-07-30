@@ -81,9 +81,15 @@
         background-color: #00FF00;
     }
 
+    /*
+      height: auto, not a matching 5rem. These SVGs are 4:3, so a square box
+      squashed them — and it also broke the morph into the family pages, whose
+      heroes are 4:3. Both ends now share one aspect ratio, so the transition
+      changes the size of the wedge without distorting it.
+    */
     dl img {
         width: 5rem;
-        height: 5rem;
+        height: auto;
     }
 
 

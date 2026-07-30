@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Join The CSE Cheese Society: free membership, monthly tastings, and a vote in the Cheese of the Month election.">
   <title>Join the Society · The CSE Cheese Society</title>
   <link rel="stylesheet" href="styles/tokens.css">
   <link rel="stylesheet" href="styles/global.css">
@@ -26,62 +27,64 @@
   </nav>
 
   <main>
-    <h2>Join The CSE Cheese Society</h2>
-    <p>Membership is free, meetings are monthly, and the cheese is real.</p>
-    <p>Fill out the form and the Keeper of the Cave will be in touch.</p>
+    <section class="card">
+      <h2>Join The CSE Cheese Society</h2>
+      <p>Membership is free, meetings are monthly, and the cheese is real.</p>
+      <p>Fill out the form and the Keeper of the Cave will be in touch.</p>
 
-    <form>
-      <label>
-        Enter your name:
-        <input type="text" />
-      </label>
-      <label>
-        Enter your email:
-        <input type="email" />
-      </label>
-      <label>
-        Which family calls to you?
-        <select>
-          <option value="fresh">Fresh</option>
-          <option value="soft">Soft-ripened</option>
-          <option value="blue">Blue</option>
-          <option value="hard">Hard</option>
-          <option value="undecided">Undecided - that's why I'm here</option>
-        </select>
-      </label>  
+      <form>
+        <label>
+          Enter your name:
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Enter your email:
+          <input type="email" name="email" />
+        </label>
+        <label>
+          Which family calls to you?
+          <select name="family">
+            <option value="fresh">Fresh</option>
+            <option value="soft">Soft-ripened</option>
+            <option value="blue">Blue</option>
+            <option value="hard">Hard</option>
+            <option value="undecided">Undecided - that's why I'm here</option>
+          </select>
+        </label>
         <fieldset>
           <legend>Which of these have you tasted?</legend>
           <label>
-            <input type="checkbox" value="brie" />
+            <input type="checkbox" name="tasted" value="brie" />
             Brie
           </label>
           <label>
-            <input type="checkbox" value="roquefort" />
+            <input type="checkbox" name="tasted" value="roquefort" />
             Roquefort
           </label>
           <label>
-            <input type="checkbox" value="aged-gouda" />
+            <input type="checkbox" name="tasted" value="aged-gouda" />
             Aged Gouda - yes, the same three from the Guide
           </label>
         </fieldset>
-      <label>
-        Tell us your favorite cheese:
-        <input type="text" placeholder="e.g. Comté" />
-      </label>
-      <button type="submit">Sign me up</button>
-    </form>
+        <label>
+          Tell us your favorite cheese:
+          <input type="text" name="favorite" placeholder="e.g. Comté" />
+        </label>
+        <button type="submit">Sign me up</button>
+      </form>
 
-    <button command="show-modal" commandfor="why-join">Why Join?</button>
-    <dialog id="why-join">
-      <ul>
-        <li>Monthly tastings. The Society buys the cheese. You bring opinions.</li>
-        <li>Voting rights in the Cheese of the Month election.</li>
-        <li>Access to THE CAVE (a mini-fridge, but a very serious one).</li>
-        <li>A laminated membership card featuring the cheese of your choice.</li>
-        <li>Amnesty program for recovering blue-cheese skeptics.</li>
-      </ul>
-      <button command="close" commandfor="why-join">I'm convinced</button>
-    </dialog>
+      <button command="show-modal" commandfor="why-join">Why Join?</button>
+      <dialog id="why-join">
+        <ul>
+          <li>Monthly tastings. The Society buys the cheese. You bring opinions.</li>
+          <li>Voting rights in the Cheese of the Month election.</li>
+          <li>Access to THE CAVE (a mini-fridge, but a very serious one).</li>
+          <li>A laminated membership card featuring the cheese of your choice.</li>
+          <li>Amnesty program for recovering blue-cheese skeptics.</li>
+        </ul>
+        <button command="close" commandfor="why-join">I'm convinced</button>
+      </dialog>
+    </section>
   </main>
 
   <footer>

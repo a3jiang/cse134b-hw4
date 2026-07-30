@@ -1,30 +1,29 @@
 /*
   join.css — page styles for join.html
 
-  NOTE: join.html currently holds two concatenated HTML documents, each of
-  which had its own <style> block. Both blocks are reproduced below in their
-  original source order, so the cascade behaves exactly as it did inline —
-  the second body rule still wins on display/alignment. Once the duplicate
-  document is removed from join.html, the block that goes with it can be
-  deleted from here too.
+  Two demos composed, as the brief asks:
+
+  06 FLEX PAGE SCAFFOLD — the body is a flex column at least as tall as the
+  viewport. Header, nav and footer take their natural height; main gets
+  flex: 1, so it absorbs whatever is left over and the footer stays at the
+  bottom even when the form is short. align-items is left at its default
+  (stretch), which is what keeps the header and footer spanning the full width
+  instead of shrinking to the width of their own text.
+
+  05 FLEX CENTERING — main is then a flex container in its own right, with a
+  single child (.card). justify-content centers that child on the main axis
+  (horizontal) and align-items on the cross axis (vertical), so the card sits
+  dead center in whatever space main ended up with. If the form grows taller
+  than the viewport, main grows with it and the centering simply has nothing
+  left to distribute, so the card is never clipped.
 */
 @layer page {
 
-    /*
-      From document 1 — FLEX PAGE SCAFFOLD
-      The body is a flex column at least as tall as the viewport. Header and
-      footer take their natural height; main has flex: 1, so it grows to
-      absorb the leftover space and pushes the footer to the bottom even
-      when the content is short.
-    */
     body {
-        --card-width: 28rem;
-        
+        --card-width: 32rem;
+
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
-        padding: var(--space-3);
         min-height: 100svh;
 
         > header {
@@ -33,18 +32,118 @@
             background: var(--panel);
         }
 
-        > main {
-            max-width: var(--card-width);
-            padding: var(--space-3);
-            border: var(--border);
-            border-block-start: var(--rule);
-            background: var(--panel);
+        > nav {
+            padding: var(--space-1) var(--space-3);
+            border-block-end: var(--border);
         }
 
         > footer {
             padding: var(--space-2) var(--space-3);
             border-block-start: var(--border);
             background: var(--panel);
+            font-size: var(--text-s);
         }
     }
+
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--space-3);
+    }
+
+    /*
+      width: 100% as well as max-width, not max-width alone: as a centered flex
+      item the card is shrink-to-fit by default and would never reach its cap.
+    */
+    .card {
+        width: 100%;
+        max-width: var(--card-width);
+        padding: var(--space-3);
+        border: var(--border);
+        border-block-start: var(--rule);
+        background: var(--panel);
+    }
+
+    /*
+      THE FORM
+      A single column with one gap value doing all the vertical rhythm, so no
+      field needs a margin of its own. Labels are blocks, so each control sits
+      under its own text rather than beside it.
+    */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        margin-block-start: var(--space-3);
+
+        label {
+            display: block;
+        }
+
+        /* Text-like controls fill the card. Checkboxes stay inline with their
+           labels, so they are excluded here. */
+        input:not([type="checkbox"]),
+        select {
+            width: 100%;
+            margin-block-start: var(--space-1);
+            padding: var(--space-1);
+            border: var(--border);
+            background: var(--paper);
+            font: inherit;
+        }
+
+        fieldset {
+            padding: var(--space-2);
+            border: var(--border);
+
+            label {
+                margin-block-start: var(--space-1);
+            }
+        }
+    }
+
+    button {
+        padding: var(--space-1) var(--space-2);
+        border: var(--border);
+        background: var(--paper);
+        font: inherit;
+
+        &:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+    }
+
+    /* The one thing on the page you are meant to press, so it carries the
+       accent rule the panels use. align-self stops it stretching the full
+       width of the form column. */
+    button[type="submit"] {
+        align-self: start;
+        border-block-start: var(--rule);
+    }
+
+    /* "Why join?" is secondary to the form, so it sits below it. */
+    .card > button {
+        margin-block-start: var(--space-3);
+    }
+
+    dialog {
+        max-width: var(--card-width);
+        padding: var(--space-3);
+        border: var(--border);
+        border-block-start: var(--rule);
+        background: var(--panel);
+
+        ul {
+            margin: 0 0 var(--space-2);
+            padding-inline-start: var(--space-3);
+        }
+    }
+
+    dialog::backdrop {
+        background: rgb(0 0 0 / 0.4);
+    }
+
 }
